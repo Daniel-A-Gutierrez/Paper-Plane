@@ -39,6 +39,7 @@ public class CameraFollow: MonoBehaviour {
         bool lookingDown = dy>0;
         if( !((lookingUp & (transform.eulerAngles.x+90)%360 < 10 -dy ) | (lookingDown & (transform.eulerAngles.x+90)%360 >170-dy)))
             transform.RotateAround(player.transform.position,transform.right,dy);
+
         transform.forward = (player.transform.position+offset-transform.position).normalized;
 
     }
