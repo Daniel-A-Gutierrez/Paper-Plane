@@ -27,5 +27,6 @@ public class BasicMove : MonoBehaviour
             transform.Translate(speed*cam.transform.up,Space.World);
         if(Input.GetKey(KeyCode.E))
             transform.Translate(speed*-cam.transform.up,Space.World);
+        transform.forward = new Vector3(GetComponent<Rigidbody>().velocity.x ,0 , GetComponent<Rigidbody>().velocity.z);
     }
 }
