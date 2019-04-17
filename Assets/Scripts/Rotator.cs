@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Rotator : MonoBehaviour
 {
+    public Vector3 rotationAxis;
+    public float rotationSpeed;
+    public float scale;
     // Start is called before the first frame update
     void Start()
     {
