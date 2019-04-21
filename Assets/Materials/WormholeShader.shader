@@ -28,6 +28,7 @@
         {
             float2 uv_MainTex;
 			float3 viewDir;
+            float depth : DEPTH;
         };
 
         half _Glossiness;
@@ -45,12 +46,12 @@
         void surf (Input IN, inout SurfaceOutputStandard o)
         {
             // Albedo comes from a texture tinted by color
-            fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
+            fixed4 c =  _Color * (1-fixed4(IN.depth,IN.depth,IN.depth,1));
             o.Albedo = c.rgb*(1-pow(dot(normalize(IN.viewDir), o.Normal), _TPow));
             // Metallic and smoothness come from slider variables
             o.Metallic = _Metallic;
             o.Smoothness = _Glossiness;
-			o.Alpha = 0;// ;
+			//o.Alpha = 0;// ;
         }
         ENDCG
     }
