@@ -6,6 +6,7 @@ public class NoiseCue : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject player;
+    public float PitchChange = 1;
     AudioSource sound;
     void Start()
     {
@@ -23,6 +24,6 @@ public class NoiseCue : MonoBehaviour
     void Update()
     {
         float current_distance = Vector3.Distance(transform.position, player.transform.position);
-        sound.pitch = 3 / Mathf.Pow(current_distance,.2f);
+        sound.pitch = 3 * Mathf.Pow(current_distance, PitchChange);
     }
 }

@@ -12,6 +12,7 @@ public class CreateCubeWorld : MonoBehaviour
     public float gravity_str;
     public float num_cubes;
     public Material winner;
+    public bool menu = false;
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +46,18 @@ public class CreateCubeWorld : MonoBehaviour
                 go.GetComponent<AudioSource>().enabled = true;
                 go.GetComponent<NoiseCue>().enabled = true;
                 GameObject.FindGameObjectWithTag("Player").GetComponent<WinOrLose>().wincube = go;
+                if(menu)
+                {
+                    go.GetComponent<Rigidbody>().AddForce(-trans_direction * speed, ForceMode.VelocityChange);
+                    go.GetComponent<Gravitator>().Gravity = 0;
+                    go.transform.position = GameObject.FindGameObjectWithTag("MainCamera").transform.position;
+                    go.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                    go.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+                    go.GetComponent<AudioSource>().volume = .25f;
+                    go.transform.Translate(10,4,20);
+                    go.GetComponent<Rigidbody>().AddTorque(-.9f*torque_dir*rot_speed, ForceMode.VelocityChange);
+                    go.transform.localScale = Vector3.one*2;
+                }
             }
 
         }

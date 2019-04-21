@@ -4,7 +4,7 @@
 	{
 		_MainTex ("Texture", 2D) = "white" {}
 		_Color("Color" , Color) = (1,1,1,1)
-		_TPow("Transparency Power" , Float) = 1
+		_FadeDistance("FadeDistance" , Float) = 1
 	}
 	SubShader
 	{
@@ -35,13 +35,14 @@
 			sampler2D _MainTex;
 			float4 _MainTex_ST;
 			fixed4 _Color;
-			
+			float _FadeDistance;
+            
 			v2f vert (appdata v)
 			{
 				v2f o;
 				o.vertex = UnityObjectToClipPos(v.vertex);
 				o.uv = TRANSFORM_TEX(v.uv, _MainTex);
-				o.depth = -mul(UNITY_MATRIX_MV, v.vertex).z * _ProjectionParams.w;
+				o.depth = -mul(UNITY_MATRIX_MV, v.vertex).z / _FadeDistance;
 				return o;
 			}
 			

@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Main Menu.unity
+    guid: 403b78587094a084c8e679c17962f667
+  - enabled: 1
     path: Assets/Scenes/Proof Of Camera Controller.unity
     guid: ad67f51c95c6d6b4bbe328732f6a76ae
   m_configObjects: {}

@@ -18,9 +18,8 @@ public class WinOrLose : MonoBehaviour
     {
         if(collision.gameObject.tag == "winner")
         {
-            youwin.SetActive(true);
             wincube.GetComponent<AudioSource>().volume = 0f;
-            
+            youwin.SetActive(true);
         }
         else if(collision.gameObject.tag == "not winner")
         {
@@ -28,9 +27,17 @@ public class WinOrLose : MonoBehaviour
         }
         GetComponent<PaperPlaneController>().enabled = false;
         GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>().enabled = false;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         playagain.SetActive(true);
+        GetComponent<Pause>().enabled = false;
 
-        Time.timeScale = 0;
+    }
+
+    IEnumerator WaitToSlow()
+    {
+        yield return null;
+        Time.timeScale = 1/60f;
     }
 
 }
