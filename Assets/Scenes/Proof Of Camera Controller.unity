@@ -1899,9 +1899,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 534669902}
-  xdrag: 60
-  ydrag: 60
-  zdrag: 0.0005
+  xdrag: 10
+  ydrag: 10
+  zdrag: 0.01
   turnSpeed: 1.87
 --- !u!114 &1250078260
 MonoBehaviour:
